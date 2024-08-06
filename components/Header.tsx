@@ -8,7 +8,7 @@ type Props = {}
 const Header = (props: Props) => {
   const { user } = useUser();
   return (
-    <div className="flex items-center justify-between p-5">
+    <div className="flex items-center justify-between p-5 max-h-20 h-20">
       {user && (
         <div className="h-fit w-fit flex items-center gap-2">
           <Image
