@@ -18,7 +18,7 @@ const Header = (props: Props) => {
             height={40}
             className="rounded-full"
           />
-          <h1 className="text-2xl mb-1">{user?.firstName}{`'s`} Zen-dō</h1>
+          <h1 className="text-2xl mb-1">{user?.firstName}{`'s`} Sanzen-dō</h1>
         </div>
       )}
 

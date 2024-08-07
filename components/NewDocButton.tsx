@@ -24,7 +24,7 @@ const NewDocButton = (props: Props) => {
       onClick={handleCreate}
       disabled={isPending}
     >
-      {isPending ? "Creating..." : "New Document"}
+      {isPending ? "Creating..." : "New Zen-dō"}
     </Button>
   )
 }
