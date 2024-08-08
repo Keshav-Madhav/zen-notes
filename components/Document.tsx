@@ -32,10 +32,6 @@ const Document = ({id}: Props) => {
     }
   },[docData])
 
-  const addEmoji = (emoji: any) => {
-    setNameInput((prevInput) => prevInput + emoji.native);
-  };
-
   return (
     <div>
 
