@@ -119,7 +119,7 @@ const Sideabar = (props: Props) => {
   )
 
   return (
-    <div className="md:px-5 md:py-7 bg-gray-200 relative h-[calc(100dvh-5rem)] w-[13%] min-w-[11rem] max-w-[17rem]">
+    <div className="md:px-5 md:py-7 bg-gray-200 relative h-[calc(100dvh-5rem)] md:w-[13%] md:min-w-[11rem] max-w-[17rem]">
       <Sheet>
         <SheetTrigger className="md:hidden absolute bg-white rounded-full bottom-3 left-3 shadow-md hover:p-0.5 hover:bottom-2.5 hover:left-2.5 transition-all">
           <MenuIcon size={40} className="p-2 hover:opacity-30 rounded-lg"/>
