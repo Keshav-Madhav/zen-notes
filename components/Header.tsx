@@ -2,6 +2,7 @@
 
 import { useUser, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
 import Image from "next/image";
+import BreadCrumbs from "./BreadCrumbs";
 
 type Props = {}
 
@@ -21,6 +22,8 @@ const Header = (props: Props) => {
           <h1 className="text-2xl mb-1">{user?.firstName}{`'s`} Sanzen-dō</h1>
         </div>
       )}
+
+      <BreadCrumbs />
 
       <div>
         <SignedOut>

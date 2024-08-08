@@ -36,7 +36,7 @@ const Sideabar = (props: Props) => {
   })
 
   const { user }= useUser()
-  const [data, loading, error] = useCollection(
+  const [data] = useCollection(
     user && (
       query(
         collectionGroup(db, 'rooms'), 
@@ -47,6 +47,10 @@ const Sideabar = (props: Props) => {
         )
       )
     )
+  )
+
+  const [data2] = useCollection(
+    query(collectionGroup(db, 'documents'))
   )
 
   useEffect(() => {
@@ -91,7 +95,7 @@ const Sideabar = (props: Props) => {
             <SideBarOption
               key={doc.id} 
               id={doc.id}
-              href={`/doc/${doc.roomId}`} 
+              href={`/${data2?.docs.find((d) => d.id === doc.roomId)?.data().title.replaceAll(" ","_")}/${doc.roomId}`}
             />
           ))
         ) : (
@@ -108,7 +112,7 @@ const Sideabar = (props: Props) => {
             <SideBarOption
               key={doc.id} 
               id={doc.id}
-              href={`/doc/${doc.roomId}`} 
+              href={`/${doc.title}/${doc.roomId}`} 
             />
           ))
         ) : (
