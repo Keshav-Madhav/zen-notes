@@ -1,7 +1,7 @@
 export type User ={
   email: string;
-  fullName: string;
-  firstName: string;
-  lastName: string;
+  fullname: string;
+  firstname: string;
+  lastname: string;
   image: string;
 }

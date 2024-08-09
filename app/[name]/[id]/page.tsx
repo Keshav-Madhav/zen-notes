@@ -1,19 +1,26 @@
-'use client'
-
 import Document from "@/components/Document"
+import { Metadata } from "next"
 
 type Props = {
-  params:{
+  params: {
     name: string
     id: string
   }
 }
 
-const page = ({params: {name, id}}: Props) => {
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `Zen Notes - ${params.name}`,
+    description: `You're viewing the Zen-do ${params.name}`,
+  }
+}
+
+const Page = ({ params: { name, id } }: Props) => {
   return (
     <div className="flex flex-col flex-1 min-h-[calc(100dvh-7rem)]">
-      <Document id={id}/>
+      <Document id={id} />
     </div>
   )
 }
-export default page
+
+export default Page

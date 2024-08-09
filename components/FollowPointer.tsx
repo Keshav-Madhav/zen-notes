@@ -1,3 +1,4 @@
+import { stringToColor } from '@/lib/stringToColor';
 import { motion, AnimatePresence, useMotionValue } from 'framer-motion'
 
 type Props = {
