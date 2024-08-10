@@ -6,6 +6,7 @@ import { Input } from "./ui/input"
 import { useEffect, useState, useTransition } from "react"
 import { db } from "@/firebase"
 import { useDocumentData } from "react-firebase-hooks/firestore"
+import Editor from "./Editor"
 
 type Props = {
   id: string
@@ -33,7 +34,7 @@ const Document = ({id}: Props) => {
   },[docData])
 
   return (
-    <div>
+    <div className="flex-1 h-full bg-white p-5">
 
       <div className="flex max-w-6xl mx-auto justify-between pb-5">
         <form
@@ -63,6 +64,9 @@ const Document = ({id}: Props) => {
 
       </div>
 
+      <hr className="pb-10"/>
+
+      <Editor />
     </div>
   )
 }
