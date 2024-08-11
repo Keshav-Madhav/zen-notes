@@ -13,6 +13,7 @@ import { toast } from "sonner"
 import { useRouter } from "next/navigation"
 import InviteUser from "./InviteUser"
 import ManageUsers from "./ManageUsers"
+import Avatars from "./Avatars"
 
 type Props = {
   id: string
@@ -84,6 +85,8 @@ const Document = ({id}: Props) => {
       
       <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">
         <ManageUsers />
+
+        <Avatars />
       </div>
 
       <hr className="pb-10"/>
