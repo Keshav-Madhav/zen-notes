@@ -67,3 +67,46 @@ export async function inviteUserToDoc(docId: string, email: string) {
     return {success: false}
   }
 }
+
+export async function makeOwnerOfDoc(docId: string, userId: string) {
+  auth().protect();
+
+  try {
+    await adminDb.collection("users").doc(userId).collection("rooms").doc(docId).update({
+      role: "owner"
+    })
+
+    return {success: true}
+  } catch (error) {
+    console.error(error)
+    return {success: false}
+  }
+}
+
+export async function removeOwnerOfDoc(docId: string, userId: string) {
+  auth().protect();
+
+  try {
+    await adminDb.collection("users").doc(userId).collection("rooms").doc(docId).update({
+      role: "collaborator"
+    })
+
+    return {success: true}
+  } catch (error) {
+    console.error(error)
+    return {success: false}
+  }
+}
+
+export async function removeUserFromDoc(docId: string, userId: string) {
+  auth().protect();
+
+  try {
+    await adminDb.collection("users").doc(userId).collection("rooms").doc(docId).delete()
+
+    return {success: true}
+  } catch (error) {
+    console.error(error)
+    return {success: false}
+  }
+}
