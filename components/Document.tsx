@@ -11,6 +11,7 @@ import useOwner from "@/lib/useOwner"
 import DeleteDocument from "./DeleteDocument"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
+import InviteUser from "./InviteUser"
 
 type Props = {
   id: string
@@ -72,6 +73,8 @@ const Document = ({id}: Props) => {
 
           {isOwner && (
             <>
+              <InviteUser />
+
               <DeleteDocument />
             </>
           )}

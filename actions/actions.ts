@@ -49,3 +49,21 @@ export async function deleteDoc(docId: string) {
     return {success: false}
   }
 }
+
+export async function inviteUserToDoc(docId: string, email: string) {
+  auth().protect();
+
+  try {
+    await adminDb.collection("users").doc(email).collection("rooms").doc(docId).set({
+      userId: email,
+      role: "collaborator",
+      createdAt: new Date(),
+      roomId: docId,
+    })
+
+    return {success: true}
+  } catch (error) {
+    console.error(error)
+    return {success: false}
+  }
+}

@@ -112,7 +112,7 @@ const Sideabar = (props: Props) => {
             <SideBarOption
               key={doc.id} 
               id={doc.id}
-              href={`/${doc.title}/${doc.roomId}`} 
+              href={`/${data2?.docs.find((d) => d.id === doc.roomId)?.data().title.replaceAll(" ","_")}/${doc.roomId}`}
             />
           ))
         ) : (
