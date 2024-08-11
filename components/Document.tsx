@@ -9,6 +9,8 @@ import { useDocumentData } from "react-firebase-hooks/firestore"
 import Editor from "./Editor"
 import useOwner from "@/lib/useOwner"
 import DeleteDocument from "./DeleteDocument"
+import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 type Props = {
   id: string
@@ -19,16 +21,23 @@ const Document = ({id}: Props) => {
   const [isUpdating, startUpdating] = useTransition()
   const [docData, loading, error] = useDocumentData(doc(db, 'documents', id));
   const isOwner = useOwner();
+  const router = useRouter();
 
-  const handleNameUpdate = () => {
-    if(nameInput.trim()){
+  const handleNameUpdate = async () => {
+    if (nameInput.trim()) {
       startUpdating(async() => {
-        await updateDoc(doc(db, 'documents', id), {
-          title: nameInput,
-        })
-      })
+        try {
+          await updateDoc(doc(db, 'documents', id), {
+            title: nameInput,
+          });
+          toast.success("Title updated successfully");
+          router.replace(`/${nameInput.replaceAll(' ', '_')}/${id}`);
+        } catch (error) {
+          console.error("Error updating title:", error);
+        }
+      });
     }
-  }
+  };
 
   useEffect(() => {
     if(docData){
