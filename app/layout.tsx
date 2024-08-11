@@ -3,6 +3,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import Sideabar from "@/components/Sideabar";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Zen Notes",
@@ -22,6 +23,8 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
               {children}
             </div>
           </div>
+
+          <Toaster position="top-center" richColors closeButton duration={10000}/>
         </body>
       </html>
     </ClerkProvider>

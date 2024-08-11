@@ -7,6 +7,8 @@ import { useEffect, useState, useTransition } from "react"
 import { db } from "@/firebase"
 import { useDocumentData } from "react-firebase-hooks/firestore"
 import Editor from "./Editor"
+import useOwner from "@/lib/useOwner"
+import DeleteDocument from "./DeleteDocument"
 
 type Props = {
   id: string
@@ -16,6 +18,7 @@ const Document = ({id}: Props) => {
   const [nameInput, setNameInput] = useState('')
   const [isUpdating, startUpdating] = useTransition()
   const [docData, loading, error] = useDocumentData(doc(db, 'documents', id));
+  const isOwner = useOwner();
 
   const handleNameUpdate = () => {
     if(nameInput.trim()){
@@ -57,6 +60,12 @@ const Document = ({id}: Props) => {
           >
             {isUpdating ? 'Updating...' : 'Update'}
           </Button>
+
+          {isOwner && (
+            <>
+              <DeleteDocument />
+            </>
+          )}
         </form>
       </div>
       
