@@ -76,7 +76,7 @@ const UserRowManage = ({doc}: Props) => {
           onClick={() => 
             doc.data().role === 'owner' ? handleRemoveOwner(doc.data().userId) : handleMakeOwner(doc.data().userId)
           }
-          disabled={isPendingRemove || isPendingMake || doc.data().userId === user?.emailAddresses[0].toString()}
+          disabled={!isOwner || isPendingRemove || isPendingMake || doc.data().userId === user?.emailAddresses[0].toString()}
           className="w-[7.5rem]"
         >
           {doc.data().role === 'owner' ? 
