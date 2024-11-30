@@ -32,7 +32,7 @@ const Editor = (props: Props) => {
     }
   }, [room])
 
-  if(!doc || !provider) return null;
+  if(!doc || !provider) return null
 
   return (
     <div className="max-w-6xl mx-auto">
