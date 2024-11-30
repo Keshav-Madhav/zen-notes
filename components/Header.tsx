@@ -3,13 +3,14 @@
 import { useUser, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs"
 import Image from "next/image";
 import BreadCrumbs from "./BreadCrumbs";
+import DarkLightToggle from "./ui/DarkLightToggle";
 
 type Props = {}
 
 const Header = (props: Props) => {
   const { user } = useUser();
   return (
-    <div className="flex items-center justify-between p-5 max-h-20 h-20">
+    <div className="flex items-center justify-between p-5 max-h-20 h-20 bg-gray-100 dark:bg-gray-900 ">
       {user && (
         <div className="h-fit w-fit flex items-center gap-2">
           <Image
@@ -25,13 +26,24 @@ const Header = (props: Props) => {
 
       <BreadCrumbs />
 
-      <div>
+      <div className="flex items-center">
+        <DarkLightToggle />
+
         <SignedOut>
           <SignInButton />
         </SignedOut>
 
         <SignedIn>  
-          <UserButton />
+          <UserButton 
+            appearance={{
+              elements:{
+                userButtonAvatarBox:{
+                  height: 44,
+                  width: 44
+                }
+              }
+            }}
+          />
         </SignedIn>
       </div>
     </div>

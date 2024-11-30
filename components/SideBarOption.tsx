@@ -23,7 +23,7 @@ const SideBarOption = ({ id, href }: Props) => {
   return (
     <Link
       href={href}
-      className={`border p-2 rounded-md ${isActive ? 'bg-gray-300 font-bold border-black' : 'border-gray-400'}`}
+      className={`border p-2 rounded-md ${isActive ? 'bg-gray-300 dark:bg-gray-700 font-bold border-black' : 'border-gray-400'}`}
       title={data.title}
     >
       <p className="truncate">{data.title}</p>

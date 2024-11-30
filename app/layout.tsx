@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import Sideabar from "@/components/Sideabar";
 import { Toaster } from "sonner";
+import ThemeProviderWrapper from "@/components/ui/theme-provider";
 
 export const metadata: Metadata = {
   title: "Zen Notes",
@@ -13,18 +14,20 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className="dark">
         <body className="h-dvh max-h-dvh overflow-hidden">
-          <Header/>
-          <div className="flex min-h-screen">
-            <Sideabar/>
+          <ThemeProviderWrapper>
+            <Header/>
+            <div className="flex min-h-screen">
+              <Sideabar/>
 
-            <div className="flex-1 p-4 bg-gray-100 overflow-y-auto h-[calc(100dvh-5rem)]">
-              {children}
+              <div className="flex-1 p-4 bg-background overflow-y-auto h-[calc(100dvh-5rem)]">
+                {children}
+              </div>
             </div>
-          </div>
 
-          <Toaster position="top-center" richColors closeButton duration={10000}/>
+            <Toaster position="top-center" richColors closeButton duration={10000}/>
+          </ThemeProviderWrapper>
         </body>
       </html>
     </ClerkProvider>

@@ -87,7 +87,7 @@ const Sideabar = (props: Props) => {
       <NewDocButton/>
 
       <div className="flex flex-col py-2 mt-2 space-y-3">
-        <h2 className="text-gray-700 font-semibold text-md">
+        <h2 className="text-gray-700 dark:text-gray-300 font-semibold text-md">
           My Zen Gardens
         </h2>
         {groupData.owner.length > 0 ? (
@@ -99,12 +99,12 @@ const Sideabar = (props: Props) => {
             />
           ))
         ) : (
-          <h2 className="text-gray-500 font-semibold text-sm ">No zen-dō{`'`}s Created</h2>
+          <h2 className="text-gray-500 dark:text-gray-400 font-semibold text-sm ">No zen-dō{`'`}s Created</h2>
         )}
       </div>
 
       <div className="flex flex-col py-2 mt-2 space-y-3">
-        <h2 className="text-gray-700 font-semibold text-md">
+        <h2 className="text-gray-700 dark:text-gray-300 font-semibold text-md">
           Shared Zen Gardens
         </h2>
         {groupData.editor.length > 0 ? 
@@ -116,16 +116,16 @@ const Sideabar = (props: Props) => {
             />
           ))
         ) : (
-          <h2 className="text-gray-500 font-semibold text-sm ">No zen-dō{`'`}s Shared</h2>
+          <h2 className="text-gray-500 dark:text-gray-400 font-semibold text-sm ">No zen-dō{`'`}s Shared</h2>
         )}
       </div>
     </>
   )
 
   return (
-    <div className="md:px-5 md:py-7 bg-gray-200 relative h-[calc(100dvh-5rem)] md:w-[13%] md:min-w-[11rem] max-w-[17rem]">
+    <div className="md:px-5 md:py-7 bg-gray-100 dark:bg-gray-900 relative h-[calc(100dvh-5rem)] md:w-[13%] md:min-w-[11rem] max-w-[17rem]">
       <Sheet>
-        <SheetTrigger className="md:hidden absolute bg-white rounded-full bottom-3 left-3 shadow-md hover:p-0.5 hover:bottom-2.5 hover:left-2.5 transition-all">
+        <SheetTrigger className="md:hidden absolute bg-white dark:bg-slate-950 rounded-full bottom-3 left-3 shadow-md hover:p-0.5 hover:bottom-2.5 hover:left-2.5 transition-all">
           <MenuIcon size={40} className="p-2 hover:opacity-30 rounded-lg"/>
         </SheetTrigger>
 

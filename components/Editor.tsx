@@ -9,6 +9,7 @@ import { Button } from "./ui/button"
 import BlockNote from "./BlockNote"
 import TranslateDocument from "./TranslateDocument"
 import ChatToDocument from "./ChatToDocument"
+import { useTheme } from "next-themes"
 
 type Props = {}
 
@@ -16,7 +17,7 @@ const Editor = (props: Props) => {
   const room = useRoom()
   const [ doc, setDoc ] = useState<Y.Doc>()
   const [ provider, setProvider ] = useState<LiveblocksYjsProvider>()
-  const [ darkMode, setDarkMode ] = useState(false)
+  const { theme } = useTheme()
 
   useEffect(() => {
     const yDoc = new Y.Doc()
@@ -39,19 +40,12 @@ const Editor = (props: Props) => {
         <TranslateDocument doc={doc} />
 
         <ChatToDocument doc={doc} />
-
-        <Button 
-          className={`hover:text-white ${darkMode ? 'text-gray-300 bg-gray-700 hover:bg-gray-100 hover:text-gray-700' : 'text-gray-700 bg-gray-200 hover:bg-gray-300 hover:text-gray-700'}`}
-          onClick={() => setDarkMode(!darkMode)}
-        >
-          {darkMode ? <SunIcon />: <MoonIcon/>}
-        </Button>
       </div>
 
       <BlockNote
         doc={doc}
         provider={provider}
-        darkMode={darkMode}
+        darkMode={theme === 'dark'}
       />
     </div>
   )

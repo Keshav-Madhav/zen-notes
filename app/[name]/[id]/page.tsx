@@ -10,7 +10,7 @@ type Props = {
 
 export const generateMetadata = ({ params }: Props): Metadata => {
   return {
-    title: `Zen Notes - ${params.name}`,
+    title: `Zen Notes - ${params.name.replaceAll('_', ' ')}`,
     description: `You're viewing the Zen-do ${params.name}`,
   }
 }

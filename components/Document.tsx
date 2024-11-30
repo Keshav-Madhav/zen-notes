@@ -49,7 +49,7 @@ const Document = ({id}: Props) => {
   },[docData])
 
   return (
-    <div className="flex-1 h-full bg-white p-5">
+    <div className="flex-1 h-full bg-white dark:bg-slate-950 p-5">
 
       <div className="flex max-w-6xl mx-auto justify-between pb-5">
         <form
